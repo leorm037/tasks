@@ -15,6 +15,7 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task extends AbstractEntity
 {
+
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -36,6 +37,9 @@ class Task extends AbstractEntity
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
+
+    #[ORM\Column(options: ["default" => "1"], nullable: false)]
+    private ?bool $situation = true;
 
     public function getId(): ?Uuid
     {
@@ -98,6 +102,18 @@ class Task extends AbstractEntity
     public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function isSituation(): ?bool
+    {
+        return $this->situation;
+    }
+
+    public function setSituation(bool $situation): static
+    {
+        $this->situation = $situation;
 
         return $this;
     }

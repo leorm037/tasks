@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Task;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,6 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TaskRepository extends ServiceEntityRepository
 {
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Task::class);
@@ -39,6 +41,32 @@ class TaskRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByName(string $name): ?Task
+    {
+        return $this->createQueryBuilder('t')
+                        ->where('t.name = :name')
+                        ->setParameter('name', $name)
+                        ->andWhere('t.situation = :situation')
+                        ->setParameter('situation', true)
+                        ->setMaxResults(1)
+                        ->getQuery()
+                        ->getOneOrNullResult()
+        ;
+    }
+
+    public function findByOwner(User $user)
+    {
+
+        return $this->createQueryBuilder('t')
+                        ->where('t.owner = :owner')
+                        ->setParameter('owner', $user->getId()->toBinary())
+                        ->andWhere('t.situation = :situation')
+                        ->setParameter('situation', true)
+                        ->getQuery()
+                        ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Task[] Returns an array of Task objects
 //     */
@@ -53,7 +81,6 @@ class TaskRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
-
 //    public function findOneBySomeField($value): ?Task
 //    {
 //        return $this->createQueryBuilder('t')
