@@ -1,0 +1,32 @@
+{# templates/_menu.html.twig #}
+<div class="collapse navbar-collapse" id="navbarMenu">
+    <ul class="navbar-nav ms-auto">
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <li class="nav-item">
+                <a class="nav-link menu" href="#"><i class="bi bi-clipboard2-plus"></i> {{ 'new'|trans({}, 'label') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu" href="#"><i class="bi bi-funnel"></i> {{ 'search'|trans({}, 'label') }}</a>
+            </li>        
+            <li class="nav-item">
+                <a class="nav-link menu" href="#"><i class="bi bi-pin"></i> {{ 'pendencies'|trans({}, 'label') }}</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-badge"></i> {{ app.user.name }}</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item menu" href="#"><i class="bi bi-key"></i> {{ 'password_reset'|trans({}, 'label') }}</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu" href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i> {{ 'logout'|trans({}, 'label') }}</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link menu" href="{{ path('app_login') }}"><i class="bi bi-door-closed"></i> {{ 'login'|trans({}, 'label') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu" href="#"><i class="bi bi-person-plus"></i> {{ 'register'|trans({}, 'label') }}</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

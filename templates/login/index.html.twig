@@ -1,0 +1,47 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} :: {{ 'login'|trans({}, 'label') }}{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active"><i class="bi bi-door-closed"></i> {{ 'login'|trans({}, 'label') }}</li>
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="container-fluid">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i> {{ error.messageKey|trans(error.messageData, 'security') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'close'|trans([],'label') }}"></button>
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="row mt-5">
+        <div class="col-6 mx-auto">
+            <form action="{{ path('app_login') }}" method="post">
+                <div class="card">
+                    <div class="card-header bg-primary bg-gradient text-light">
+                        <h1 class="h4 my-0">{{ 'login'|trans({}, 'label') }}</h1>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">{{ 'username'|trans({}, 'label') }}</label>
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" autocomplete="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{ 'password'|trans({}, 'label') }}</label>
+                            <input type="password" class="form-control" id="password" name="_password" autocomplete="current-password">
+                        </div>
+                    </div>
+                    <div class="card-footer bg-primary-subtle bg-gradient text-end">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <button type="submit" class="btn btn-primary bg-gradient btn-sm">{{ 'login'|trans({}, 'label') }}</button>
+                        <button type="reset" class="btn btn-secondary bg-gradient btn-sm">{{ 'reset'|trans({}, 'label') }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

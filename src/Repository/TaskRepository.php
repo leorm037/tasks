@@ -41,16 +41,21 @@ class TaskRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByName(string $name): ?Task
+    /**
+     * 
+     * @param string $name
+     * @return Task[]
+     */
+    public function findByName(string $name)
     {
         return $this->createQueryBuilder('t')
                         ->where('t.name = :name')
                         ->setParameter('name', $name)
-                        ->andWhere('t.situation = :situation')
-                        ->setParameter('situation', true)
-                        ->setMaxResults(1)
+                        ->andWhere('t.done = :done')
+                        ->setParameter('done', false)
+                        ->orderBy('t.name', 'ASC')
                         ->getQuery()
-                        ->getOneOrNullResult()
+                        ->getResult()
         ;
     }
 
@@ -60,8 +65,9 @@ class TaskRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
                         ->where('t.owner = :owner')
                         ->setParameter('owner', $user->getId()->toBinary())
-                        ->andWhere('t.situation = :situation')
-                        ->setParameter('situation', true)
+                        ->andWhere('t.done = :done')
+                        ->setParameter('done', false)
+                        ->orderBy('t.name', 'ASC')
                         ->getQuery()
                         ->getResult()
         ;

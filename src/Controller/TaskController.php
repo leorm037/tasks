@@ -10,14 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/task')]
 class TaskController extends AbstractController
 {
-    #[Route('/', name: 'app_task_index', methods: ['GET'])]
+
     public function index(TaskRepository $taskRepository): Response
     {
+        $user = $this->getUser();
+
         return $this->render('task/index.html.twig', [
-            'tasks' => $taskRepository->findAll(),
+                    'tasks' => $taskRepository->findByOwner($user),
         ]);
     }
 
@@ -35,8 +36,8 @@ class TaskController extends AbstractController
         }
 
         return $this->renderForm('task/new.html.twig', [
-            'task' => $task,
-            'form' => $form,
+                    'task' => $task,
+                    'form' => $form,
         ]);
     }
 
@@ -44,7 +45,7 @@ class TaskController extends AbstractController
     public function show(Task $task): Response
     {
         return $this->render('task/show.html.twig', [
-            'task' => $task,
+                    'task' => $task,
         ]);
     }
 
@@ -61,15 +62,15 @@ class TaskController extends AbstractController
         }
 
         return $this->renderForm('task/edit.html.twig', [
-            'task' => $task,
-            'form' => $form,
+                    'task' => $task,
+                    'form' => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'app_task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, TaskRepository $taskRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
             $taskRepository->remove($task, true);
         }
 

@@ -34,12 +34,12 @@ class Task extends AbstractEntity
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     protected ?DateTimeInterface $updatedAt = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
-    #[ORM\Column(options: ["default" => "1"], nullable: false)]
-    private ?bool $situation = true;
+    #[ORM\Column(options: ["default" => 0])]
+    private ?bool $done = false;
 
     public function getId(): ?Uuid
     {
@@ -106,14 +106,14 @@ class Task extends AbstractEntity
         return $this;
     }
 
-    public function isSituation(): ?bool
+    public function isDone(): ?bool
     {
-        return $this->situation;
+        return $this->done;
     }
 
-    public function setSituation(bool $situation): static
+    public function setDone(bool $done): static
     {
-        $this->situation = $situation;
+        $this->done = $done;
 
         return $this;
     }

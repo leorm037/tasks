@@ -350,33 +350,34 @@
                     <span class="title">tarefas do usuário</span>
                 </h3>
                 <ol>
-                    <li class="pending">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Dado </span>
-                            <span class="text">que temos o usu&aacute;rio &lt;username&gt; com nome &lt;name&gt; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td></tr></tbody></table></pre>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Dado </span>
                             <span class="text">que o usu&aacute;rio &lt;username&gt; tem a tarefa &lt;task_name&gt; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>jose</td><td>Dever de hist&oacute;ria</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica</td></tr><tr class="row"><td>jose</td><td>Deve de geografia</td></tr></tbody></table></pre>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de Internet</td></tr><tr class="row"><td>jose</td><td>Deve de geografia</td></tr><tr class="row"><td>jose</td><td>Dever de hist&oacute;ria</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica</td></tr></tbody></table></pre>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Quando </span>
                             <span class="text">consultar as tarefas do usu&aacute;rio &quot;leorm&quot; </span>
                             <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasDoUsuario()</span>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="failed">
                         <div class="step">
                             <span class="keyword">Então </span>
-                            <span class="text">ser&aacute; apresentado para o &lt;username&gt; a tarefa &lt;task_name&gt;: </span>
-                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoParaOUsernameATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr></tbody></table></pre>
+                            <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Pagar conta de energia</td></tr><tr class="row"><td>Pagar conta de Internet</td></tr><tr class="row"><td>Pagar conta de &aacute;gua</td></tr></tbody></table></pre>
                         </div>
+                        <pre class="backtrace">Failed asserting that two strings are equal.</pre>
                     </li>
                 </ol>
             </div>
@@ -388,37 +389,40 @@
                     <span class="title">tarefas concluídas</span>
                 </h3>
                 <ol>
-                    <li class="pending">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Dado </span>
-                            <span class="text">que temos o usu&aacute;rio &lt;username&gt; com nome &lt;name&gt; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td></tr></tbody></table></pre>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Dado </span>
-                            <span class="text">que o usu&aacute;rio &lt;username&gt; com a tarefa &lt;task_name&gt; na situa&ccedil;&atilde;o &lt;status&gt; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameComATarefaTaskNameNaSituacaoStatus()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td><td>status</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td><td>Em andamento</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td><td>Conclu&iacute;da</td></tr><tr class="row"><td>leorm</td><td>Dever de hist&oacute;ria</td><td>Em andamento</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica</td><td>Em andamento</td></tr><tr class="row"><td>jose</td><td>Deve de geografia</td><td>Conclu&iacute;da</td></tr></tbody></table></pre>
+                            <span class="text">que o usu&aacute;rio &lt;username&gt; com a tarefa &lt;task_name&gt; com status de feito &lt;done&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameComATarefaTaskNameComStatusDeFeitoDone()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td><td>done</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td><td>N&atilde;o</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td><td>Sim</td></tr><tr class="row"><td>leorm</td><td>Dever de hist&oacute;ria</td><td>N&atilde;o</td></tr><tr class="row"><td>jose</td><td>Deve de geografia</td><td>Sim</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica II</td><td>N&atilde;o</td></tr><tr class="row"><td>jose</td><td>Dever de portugu&ecirc;s</td><td>N&atilde;o</td></tr></tbody></table></pre>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Quando </span>
-                            <span class="text">consultar as tarefas em andamento do usu&aacute;rio &quot;leorm&quot; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasEmAndamentoDoUsuario()</span>
+                            <span class="text">consultar as tarefas do usu&aacute;rio &quot;jose&quot; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasDoUsuario()</span>
                         </div>
                     </li>
-                    <li class="skipped">
+                    <li class="failed">
                         <div class="step">
                             <span class="keyword">Então </span>
-                            <span class="text">ser&aacute; apresentado para o &lt;username&gt; a tarefa &lt;task_name&gt;: </span>
-                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoParaOUsernameATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Dever de hist&oacute;ria</td></tr></tbody></table></pre>
+                            <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Dever de matem&aacute;tica II</td></tr><tr class="row"><td>Dever de portugu&ecirc;s</td></tr></tbody></table></pre>
                         </div>
+                        <pre class="backtrace">Warning: Undefined array key 0 in /home/leorm/git/tasks/tests/Behat/TaskContext.php line 108</pre>
                     </li>
                 </ol>
             </div>
-            <div class="featureResult passed">Feature has passed
+            <div class="featureResult failed">Feature has failed
+                <span>Scenarios passed : 0%,
+                Scenarios failed : 100%</span>
             </div>
         </div><!DOCTYPE html>
 <html lang="en">
@@ -460,7 +464,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Automated test report - 21/06/2023 14:34:49</a>
+            <a class="navbar-brand" href="#">Automated test report - 24/06/2023 11:36:20</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -479,17 +483,17 @@
             <div class="chart-summary title">
                 1 Features:
             </div>
-            <div class="chart-summary failed">0 failed</div>
+            <div class="chart-summary failed">1 failed</div>
         </div>
         <div class="col-sm-4">
             <div class="canvas-holder">
                 <canvas id="chart-scenarios" width="300" height="300"/>
             </div>
             <div class="chart-summary title">
-                0
+                2
                 Scenarios:
             </div>
-            <div class="chart-summary failed">0 failed</div>
+            <div class="chart-summary failed">2 failed</div>
             <div class="chart-summary undefined">0 undefined</div>
             <div class="chart-summary skipped">0 skipped</div>
         </div>
@@ -498,12 +502,12 @@
                 <canvas id="chart-steps" width="300" height="300"/>
             </div>
             <div class="chart-summary title">
-                6
+                8
                 Steps:
             </div>
-            <div class="chart-summary failed">0 failed</div>
+            <div class="chart-summary failed">2 failed</div>
             <div class="chart-summary undefined">0 undefined</div>
-            <div class="chart-summary skipped">6 skipped</div>
+            <div class="chart-summary skipped">0 skipped</div>
         </div>
     </div>
     <hr>
@@ -520,7 +524,7 @@
 
                     <div class="row">
                                                     <div class="col-sm-4 feature" data-id="feature-1">
-                                <div class="card passed">
+                                <div class="card failed">
                                     <div class="header">
                                         <h2>Feature: </h2>
                                     </div>
@@ -542,11 +546,11 @@
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                                 <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                     style="width: 100%">
+                                                     style="width: 0%">
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                                 <div class="progress-bar progress-bar-red" role="progressbar"
-                                                     style="width: 0%">
+                                                     style="width: 100%">
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -561,7 +565,7 @@
     <div id="scenario-overview" class="row">
                                     <div class="feature" data-id="feature-1">
                     <div class="col-sm-4">
-                        <div class="card passed">
+                        <div class="card failed">
                             <div class="header">
                                 <h2>Feature: </h2>
                             </div>
@@ -583,11 +587,11 @@
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                         <div class="progress-bar progress-bar-warning" role="progressbar"
-                                             style="width: 100%">
+                                             style="width: 0%">
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                         <div class="progress-bar progress-bar-red" role="progressbar"
-                                             style="width: 0%">
+                                             style="width: 100%">
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                     </div>
@@ -595,7 +599,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
-                                                    <div class="panel panel-default pending">
+                                                    <div class="panel panel-default failed">
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
@@ -613,40 +617,46 @@
                                      role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <ul class="list-group">
-                                                                                    <li class="list-group-item alert alert-warning">
-                                                <b>Dado</b> que temos o usuário &lt;username&gt; com nome &lt;name&gt;
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Leonardo Rodrigues Marques |                                                         </p>
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  José Antonio Guedes |                                                         </p>
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
                                                 <b>Dado</b> que o usuário &lt;username&gt; tem a tarefa &lt;task_name&gt;
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de água |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | leorm |  Pagar conta de energia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de água |                                                         </p>
+                                                            | leorm |  Pagar conta de Internet |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  Deve de geografia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | jose |  Dever de história |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | jose |  Dever de matemática |                                                         </p>
-                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  Deve de geografia |                                                         </p>
                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
                                                 <b>Quando</b> consultar as tarefas do usuário &quot;leorm&quot;
                                                                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
-                                                <b>Então</b> será apresentado para o &lt;username&gt; a tarefa &lt;task_name&gt;:
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-danger">
+                                                <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de energia |                                                         </p>
+                                                            | Pagar conta de energia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de água |                                                         </p>
-                                                                                                                                                                                                                                                                                                </li>
+                                                            | Pagar conta de Internet |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de água |                                                         </p>
+                                                                                                                                                                                                        <br>
+                                                    <p style="padding-left:2em ; color:gray">(Failed asserting that two strings are equal.)</p>
+                                                                                                                                                                                            </li>
                                                                                                                                                                                                                 </ul>
                                 </div>
                             </div>
-                                                    <div class="panel panel-default pending">
+                                                    <div class="panel panel-default failed">
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
@@ -664,36 +674,40 @@
                                      role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <ul class="list-group">
-                                                                                    <li class="list-group-item alert alert-warning">
-                                                <b>Dado</b> que temos o usuário &lt;username&gt; com nome &lt;name&gt;
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Leonardo Rodrigues Marques |                                                         </p>
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  José Antonio Guedes |                                                         </p>
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
-                                                <b>Dado</b> que o usuário &lt;username&gt; com a tarefa &lt;task_name&gt; na situação &lt;status&gt;
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que o usuário &lt;username&gt; com a tarefa &lt;task_name&gt; com status de feito &lt;done&gt;
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de energia |  Em andamento |                                                         </p>
+                                                            | leorm |  Pagar conta de energia |  Não |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de água |  Concluída |                                                         </p>
+                                                            | leorm |  Pagar conta de água |  Sim |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Dever de história |  Em andamento |                                                         </p>
+                                                            | leorm |  Dever de história |  Não |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  Dever de matemática |  Em andamento |                                                         </p>
+                                                            | jose |  Deve de geografia |  Sim |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  Deve de geografia |  Concluída |                                                         </p>
+                                                            | jose |  Dever de matemática II |  Não |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  Dever de português |  Não |                                                         </p>
                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
-                                                <b>Quando</b> consultar as tarefas em andamento do usuário &quot;leorm&quot;
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> consultar as tarefas do usuário &quot;jose&quot;
                                                                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-info">
-                                                <b>Então</b> será apresentado para o &lt;username&gt; a tarefa &lt;task_name&gt;:
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-danger">
+                                                <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de energia |                                                         </p>
+                                                            | Dever de matemática II |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Dever de história |                                                         </p>
-                                                                                                                                                                                                                                                                                                </li>
+                                                            | Dever de português |                                                         </p>
+                                                                                                                                                                                                        <br>
+                                                    <p style="padding-left:2em ; color:gray">(Warning: Undefined array key 0 in /home/leorm/git/tasks/tests/Behat/TaskContext.php line 108)</p>
+                                                                                                                                                                                            </li>
                                                                                                                                                                                                                 </ul>
                                 </div>
                             </div>
@@ -715,21 +729,21 @@
         new Chart(featureChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed', 'Passed'],
                 datasets: [{
-                    data: [0, 1],
+                    data: [1, 0],
                     backgroundColor: ["#F7464A", "#00a65a"],
                 }],
             }});
         new Chart(scenarioChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed', 'Pending', 'Passed'],
                 datasets: [{
-                    data: [0, 2, 0],
+                    data: [2, 0, 0],
                     backgroundColor: ['#F7464A', 'e38d13', '#00a65a'],
                 }],
             }});
         new Chart(stepChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed','Passed'],
                 datasets: [{
-                    data: [0, 0],
+                    data: [2, 6],
                     backgroundColor: ["#F7464A", "#00a65a"],
                 }],
             }});
@@ -788,19 +802,19 @@
 </body>
 </html>
 
-        <div class="summary passed">
+        <div class="summary failed">
             <div class="counters">
                 <p class="features">
-                    1 features ( <strong class="passed">1 success</strong> )
+                    1 features ( <strong class="failed">1 fail</strong> )
                 </p>
                 <p class="scenarios">
                     2 scenarios ( <strong class="failed">2 fail</strong> )
                 </p>
                 <p class="steps">
-                    8 steps ( <strong class="pending">2 pending</strong> <strong class="skipped">6 skipped</strong> )
+                    8 steps ( <strong class="passed">6 success</strong> <strong class="failed">2 fail</strong> )
                 </p>
                 <p class="time">
-                0m0.01s - 21.86Mb
+                0m0.14s - 30.23Mb
                 </p>
             </div>
             <div class="switchers">
@@ -808,12 +822,6 @@
                 <a href="javascript:void(0)" id="behat_hide_all">[-] all</a>
             </div>
         </div> 
-            <div class="pending">Pending steps :
-                <ul>
-                    <li>Dado que temos o usuário <username> com nome <name></li>
-                    <li>Dado que temos o usuário <username> com nome <name></li>
-                </ul>
-            </div>
     </div><script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js'></script>
         <script type='text/javascript'>
             $(document).ready(function(){

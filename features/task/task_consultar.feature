@@ -18,28 +18,31 @@ Funcionalidade:
 
     Cenário: tarefas do usuário
         Dado que o usuário <username> tem a tarefa <task_name>
-            | username | task_name              |
-            | leorm    | Pagar conta de energia |
-            | leorm    | Pagar conta de água    |
-            | jose     | Dever de história      |
-            | jose     | Dever de matemática    |
-            | jose     | Deve de geografia      |
+            | username | task_name               |
+            | leorm    | Pagar conta de água     |
+            | leorm    | Pagar conta de energia  |
+            | leorm    | Pagar conta de Internet |
+            | jose     | Deve de geografia       |
+            | jose     | Dever de história       |
+            | jose     | Dever de matemática     |
         Quando consultar as tarefas do usuário "leorm"
-        Então será apresentado para o <username> a tarefa <task_name>:
-            | username | task_name              |
-            | leorm    | Pagar conta de energia |
-            | leorm    | Pagar conta de água    |
+        Então será apresentado as tarefas <task_name>:
+            | task_name               |
+            | Pagar conta de energia  |
+            | Pagar conta de Internet |
+            | Pagar conta de água     |
 
     Cenário: tarefas concluídas
-        Dado que o usuário <username> com a tarefa <task_name> na situação <status>
-            | username | task_name              | status  |
-            | leorm    | Pagar conta de energia | Fazendo |
-            | leorm    | Pagar conta de água    | Feito   |
-            | leorm    | Dever de história      | Fazendo |
-            | jose     | Dever de matemática    | Fazendo |
-            | jose     | Deve de geografia      | Feito   |
-        Quando consultar as tarefas em andamento do usuário "leorm"
-        Então será apresentado para o <username> a tarefa <task_name>:
-            | username | task_name              |
-            | leorm    | Pagar conta de energia |
-            | leorm    | Dever de história      |
+        Dado que o usuário <username> com a tarefa <task_name> com status de feito <done>
+            | username | task_name              | done |
+            | leorm    | Pagar conta de energia | Não  |
+            | leorm    | Pagar conta de água    | Sim  |
+            | leorm    | Dever de história      | Não  |
+            | jose     | Deve de geografia      | Sim  |
+            | jose     | Dever de matemática II | Não  |
+            | jose     | Dever de português     | Não  |
+        Quando consultar as tarefas do usuário "jose"
+        Então será apresentado as tarefas <task_name>:
+            | task_name              |
+            | Dever de matemática II |
+            | Dever de português     |

@@ -4,48 +4,38 @@ namespace App\Tests\Behat;
 
 use App\Entity\Task;
 use App\Entity\User;
-use App\Repository\SituationRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
-use Exception;
 use PHPUnit\Framework\Assert;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class TaskContext implements Context
 {
 
-    private KernelInterface $kernel;
+    /** @var Task[] $tasks */
+    private $tasks;
     private UserRepository $userRepository;
     private TaskRepository $taskRepository;
-    private UserPasswordHasherInterface $userPasswordHasher;
-    private $tasks;
+    private UserPasswordHasherInterface $userPasswordHasherInterface;
 
     public function __construct(
-            KernelInterface $kernel,
             UserRepository $userRepository,
             TaskRepository $taskRepository,
-            UserPasswordHasherInterface $userPasswordHasher
+            UserPasswordHasherInterface $userPasswordHasherInterface
     )
     {
-        $this->kernel = $kernel;
         $this->userRepository = $userRepository;
         $this->taskRepository = $taskRepository;
-        $this->userPasswordHasher = $userPasswordHasher;
+        $this->userPasswordHasherInterface = $userPasswordHasherInterface;
     }
 
     /**
-     * @BeforeScenario
+     * @beforeScenario
      */
-    public function beforeScenario($event)
+    public function beforeScenario()
     {
-        foreach ($this->taskRepository->findAll() as $task) {
-            $this->taskRepository->remove($task, true);
-        }
-
         foreach ($this->userRepository->findAll() as $user) {
             $this->userRepository->remove($user, true);
         }
@@ -58,22 +48,17 @@ final class TaskContext implements Context
     {
         foreach ($table as $row) {
             $user = new User();
-
             $user->setUsername($row['username'])
                     ->setName($row['name'])
-                    ->setEmail($row['email']);
+                    ->setEmail($row['email'])
+            ;
 
-            $password = $this->userPasswordHasher->hashPassword($user, $user->getName());
-
+            $password = $this->userPasswordHasherInterface->hashPassword($user, $row['username']);
             $user->setPassword($password);
 
-            try {
-                Assert::assertTrue(true);
-            } catch (Exception $e) {
-                Assert::assertTrue(false);
-            }
-
             $this->userRepository->save($user, true);
+
+            Assert::assertNotNull($user->getId());
         }
     }
 
@@ -85,14 +70,13 @@ final class TaskContext implements Context
         $user = null;
 
         foreach ($table as $row) {
-            if (null === $user || $user->getUsername() !== $row['username']) {
+            if (null == $user || $row['username'] == $user->getUsername()) {
                 $user = $this->userRepository->findByUsername($row['username']);
             }
 
             $task = new Task();
             $task->setName($row['task_name'])
                     ->setOwner($user)
-                    ->setSituation($situation)
             ;
 
             $this->taskRepository->save($task, true);
@@ -108,43 +92,48 @@ final class TaskContext implements Context
     {
         $user = $this->userRepository->findByUsername($username);
         $this->tasks = $this->taskRepository->findByOwner($user);
+
+        Assert::assertIsArray($this->tasks);
     }
 
     /**
-     * @Then será apresentado para o <username> a tarefa <task_name>:
+     * @Then será apresentado as tarefas <task_name>:
      */
-    public function seraApresentadoParaOUsernameATarefaTaskName(TableNode $table)
+    public function seraApresentadoAsTarefasTaskName(TableNode $table)
     {
-        foreach ($table as $row) {
-            $condition = false;
+        $i = 0;
 
-            /** @var Task $task */
-            foreach ($this->tasks as $task) {
-                if ($task->getName() === $row['task_name'] && $task->getOwner()->getUsername() === $row['username']) {
-                    $condition = true;
-                    return;
-                }
+        foreach ($table as $row) {
+            $expected = $row['task_name'];
+            $actual = $this->tasks[$i]->getName();
+
+            Assert::assertEquals($expected, $actual);
+
+            $i++;
+        }
+    }
+
+    /**
+     * @Given que o usuário <username> com a tarefa <task_name> com status de feito <done>
+     */
+    public function queOUsuarioUsernameComATarefaTaskNameComStatusDeFeitoDone(TableNode $table)
+    {
+        $user = null;
+
+        foreach ($table as $row) {
+            if (null == $user || $row['username'] == $user->getUsername()) {
+                $user = $this->userRepository->findByUsername($row['username']);
             }
 
-            Assert::assertTrue($condition);
+            $task = new Task();
+            $task->setName($row['task_name'])
+                    ->setOwner($user)
+                    ->setDone(("Sim" === $row['done']) ? true : false)
+            ;
+
+            $this->taskRepository->save($task, true);
+
+            Assert::assertNotNull($task->getId());
         }
-
-        Assert::assertEqualsCanonicalizing($expected, $actual);
-    }
-
-    /**
-     * @Given que o usuário <username> com a tarefa <task_name> na situação <status>
-     */
-    public function queOUsuarioUsernameComATarefaTaskNameNaSituacaoStatus(TableNode $table)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When consultar as tarefas em andamento do usuário :arg1
-     */
-    public function consultarAsTarefasEmAndamentoDoUsuario($arg1)
-    {
-        throw new PendingException();
     }
 }

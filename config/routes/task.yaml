@@ -1,0 +1,5 @@
+#config/routes/task.yaml
+app_task_index:
+    path: /
+    controller: App\Controller\TaskController::index
+    methods: GET
