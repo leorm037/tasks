@@ -9,6 +9,7 @@ Funcionalidade:
     Regras:
         - Um usuário só deve consultar suas tarefas
         - Não deve ser apresentado as tarefas concluídas
+        - As tarefas devem ser apresentadas por ordem alfabetica do nome
 
     Contexto:
         Dado que temos o usuário <username>, com nome <name> e e-mail <email>
@@ -19,18 +20,18 @@ Funcionalidade:
     Cenário: tarefas do usuário
         Dado que o usuário <username> tem a tarefa <task_name>
             | username | task_name               |
-            | leorm    | Pagar conta de água     |
             | leorm    | Pagar conta de energia  |
             | leorm    | Pagar conta de Internet |
-            | jose     | Deve de geografia       |
-            | jose     | Dever de história       |
+            | leorm    | Pagar conta de água     |
+            | jose     | Dever de geografia       |
             | jose     | Dever de matemática     |
+            | jose     | Dever de história       |
         Quando consultar as tarefas do usuário "leorm"
         Então será apresentado as tarefas <task_name>:
             | task_name               |
+            | Pagar conta de água     |
             | Pagar conta de energia  |
             | Pagar conta de Internet |
-            | Pagar conta de água     |
 
     Cenário: tarefas concluídas
         Dado que o usuário <username> com a tarefa <task_name> com status de feito <done>

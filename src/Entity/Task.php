@@ -10,6 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraint as Assert;
 
 #[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
@@ -22,6 +23,8 @@ class Task extends AbstractEntity
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
     private ?Uuid $id = null;
 
+    #[Assert\Length(max: 120)]
+    #[Assert\NotBlank]
     #[ORM\Column(length: 120)]
     private ?string $name = null;
 
@@ -39,7 +42,7 @@ class Task extends AbstractEntity
     private ?User $owner = null;
 
     #[ORM\Column(options: ["default" => 0])]
-    private ?bool $done = false;
+    private bool $done = false;
 
     public function getId(): ?Uuid
     {
@@ -106,7 +109,7 @@ class Task extends AbstractEntity
         return $this;
     }
 
-    public function isDone(): ?bool
+    public function isDone(): bool
     {
         return $this->done;
     }

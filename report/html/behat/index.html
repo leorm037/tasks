@@ -339,7 +339,8 @@
 
   Regras:
       - Um usuário só deve consultar suas tarefas
-      - Não deve ser apresentado as tarefas concluídas</p>
+      - Não deve ser apresentado as tarefas concluídas
+      - As tarefas devem ser apresentadas por ordem alfabetica do nome</p>
             <ul class="tags">
             </ul>
             <div class="scenario">
@@ -361,7 +362,7 @@
                         <div class="step">
                             <span class="keyword">Dado </span>
                             <span class="text">que o usu&aacute;rio &lt;username&gt; tem a tarefa &lt;task_name&gt; </span>
-                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de Internet</td></tr><tr class="row"><td>jose</td><td>Deve de geografia</td></tr><tr class="row"><td>jose</td><td>Dever de hist&oacute;ria</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica</td></tr></tbody></table></pre>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de Internet</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>jose</td><td>Dever de geografia</td></tr><tr class="row"><td>jose</td><td>Dever de matem&aacute;tica</td></tr><tr class="row"><td>jose</td><td>Dever de hist&oacute;ria</td></tr></tbody></table></pre>
                         </div>
                     </li>
                     <li class="passed">
@@ -371,13 +372,12 @@
                             <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasDoUsuario()</span>
                         </div>
                     </li>
-                    <li class="failed">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Então </span>
                             <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
-                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Pagar conta de energia</td></tr><tr class="row"><td>Pagar conta de Internet</td></tr><tr class="row"><td>Pagar conta de &aacute;gua</td></tr></tbody></table></pre>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>Pagar conta de energia</td></tr><tr class="row"><td>Pagar conta de Internet</td></tr></tbody></table></pre>
                         </div>
-                        <pre class="backtrace">Failed asserting that two strings are equal.</pre>
                     </li>
                 </ol>
             </div>
@@ -410,19 +410,253 @@
                             <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasDoUsuario()</span>
                         </div>
                     </li>
-                    <li class="failed">
+                    <li class="passed">
                         <div class="step">
                             <span class="keyword">Então </span>
                             <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
                             <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Dever de matem&aacute;tica II</td></tr><tr class="row"><td>Dever de portugu&ecirc;s</td></tr></tbody></table></pre>
                         </div>
-                        <pre class="backtrace">Warning: Undefined array key 0 in /home/leorm/git/tasks/tests/Behat/TaskContext.php line 108</pre>
                     </li>
                 </ol>
             </div>
-            <div class="featureResult failed">Feature has failed
-                <span>Scenarios passed : 0%,
-                Scenarios failed : 100%</span>
+            <div class="featureResult passed">Feature has passed
+            </div>
+        </div>
+        <div class="feature">
+            <h2>
+                <span id="feat2" class="keyword"> Feature: </span>
+                <span class="title"></span>
+            </h2>
+            <p>  Eu, como usuário
+  Quero excluir minhas tarefas
+  Para gerenciar minhas atividades
+
+  Regras:
+      - Somente o dono da tarefa pode exclui-la</p>
+            <ul class="tags">
+            </ul>
+            <div class="scenario">
+                <ul class="tags">
+                </ul>
+                <h3>
+                    <span class="keyword"> Scenario: </span>
+                    <span class="title">excluir tarefa do usuário</span>
+                </h3>
+                <ol>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que o usu&aacute;rio &lt;username&gt; tem a tarefa &lt;task_name&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de Internet</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Quando </span>
+                            <span class="text">excluir a tarefa &quot;Pagar conta de energia&quot; do usu&aacute;rio &quot;leorm&quot; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::excluirATarefa()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Então </span>
+                            <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>Pagar conta de Internet</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="scenario">
+                <ul class="tags">
+                </ul>
+                <h3>
+                    <span class="keyword"> Scenario: </span>
+                    <span class="title">excluir tarefa de outro usuário</span>
+                </h3>
+                <ol>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que o usu&aacute;rio &lt;username&gt; tem a tarefa &lt;task_name&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>jose</td><td>Prova de matem&aacute;tica</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Quando </span>
+                            <span class="text">excluir a tarefa &quot;Prova de matem&aacute;tica&quot; do usu&aacute;rio &quot;leorm&quot; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::excluirATarefa()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Então </span>
+                            <span class="text">ser&aacute; apresentado mensagem de erro </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAMensagemDeErro()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">E </span>
+                            <span class="text">a tarefa &quot;Prova de matem&aacute;tica&quot; do usu&aacute;rio &quot;jose&quot; n&atilde;o deve ser exclu&iacute;da </span>
+                            <span class="path">App\Tests\Behat\TaskContext::aTarefaDoUsuarioNaoDeveSerExcluida()</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="featureResult passed">Feature has passed
+            </div>
+        </div>
+        <div class="feature">
+            <h2>
+                <span id="feat3" class="keyword"> Feature: </span>
+                <span class="title"></span>
+            </h2>
+            <p>  Eu, como usuário
+  Quero incluir minhas tarefas
+  Para saber mminhas atividades pendentes
+
+  Regras:
+      - É obrigatório informar o nome da tarefa
+      - A situação de pronto no cadastro da tarefa deve ser não</p>
+            <ul class="tags">
+            </ul>
+            <div class="scenario">
+                <ul class="tags">
+                </ul>
+                <h3>
+                    <span class="keyword"> Scenario: </span>
+                    <span class="title">tarefas do usuário com nome</span>
+                </h3>
+                <ol>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que o usu&aacute;rio &lt;username&gt; tem a tarefa &lt;task_name&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioUsernameTemATarefaTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>task_name</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Pagar conta de energia</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de Internet</td></tr><tr class="row"><td>leorm</td><td>Pagar conta de &aacute;gua</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Quando </span>
+                            <span class="text">consultar as tarefas do usu&aacute;rio &quot;leorm&quot; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::consultarAsTarefasDoUsuario()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Então </span>
+                            <span class="text">ser&aacute; apresentado as tarefas &lt;task_name&gt;: </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAsTarefasTaskName()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>task_name</td></tr></thead><tbody><tr class="row"><td>Pagar conta de &aacute;gua</td></tr><tr class="row"><td>Pagar conta de energia</td></tr><tr class="row"><td>Pagar conta de Internet</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="scenario">
+                <ul class="tags">
+                </ul>
+                <h3>
+                    <span class="keyword"> Scenario: </span>
+                    <span class="title">tarefas do usuário sem nome</span>
+                </h3>
+                <ol>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que o usu&aacute;rio &quot;leorm&quot; com a tarefa sem nome </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queOUsuarioComATarefaSemNome()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Quando </span>
+                            <span class="text">salvar </span>
+                            <span class="path">App\Tests\Behat\TaskContext::salvar()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Então </span>
+                            <span class="text">ser&aacute; apresentado mensagem de erro </span>
+                            <span class="path">App\Tests\Behat\TaskContext::seraApresentadoAMensagemDeErro()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">E </span>
+                            <span class="text">a tarefa n&atilde;o ser&aacute; salva </span>
+                            <span class="path">App\Tests\Behat\TaskContext::aTarefaNaoSeraSalva()</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="scenario">
+                <ul class="tags">
+                </ul>
+                <h3>
+                    <span class="keyword"> Scenario: </span>
+                    <span class="title">nova tarefa cadastrada</span>
+                </h3>
+                <ol>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que temos o usu&aacute;rio &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queTemosOUsuarioUsernameComNomeNameEEMailEmail()</span><br><pre class="argument"><table class="argument"> <thead><tr class="row"><td>username</td><td>name</td><td>email</td></tr></thead><tbody><tr class="row"><td>leorm</td><td>Leonardo Rodrigues Marques</td><td>leorm@teste.com</td></tr><tr class="row"><td>jose</td><td>Jos&eacute; Antonio Guedes</td><td>jose@teste.com</td></tr></tbody></table></pre>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Dado </span>
+                            <span class="text">que a tarefa &quot;Pagar conta de energia&quot; &eacute; nova </span>
+                            <span class="path">App\Tests\Behat\TaskContext::queATarefaENova()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Quando </span>
+                            <span class="text">salvar </span>
+                            <span class="path">App\Tests\Behat\TaskContext::salvar()</span>
+                        </div>
+                    </li>
+                    <li class="passed">
+                        <div class="step">
+                            <span class="keyword">Então </span>
+                            <span class="text">a tarefa &quot;Pagar conta de energia&quot; deve ter a situa&ccedil;&atilde;o pronto &quot;n&atilde;o&quot; </span>
+                            <span class="path">App\Tests\Behat\TaskContext::aTarefaDeveTerASituacaoPronto()</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="featureResult passed">Feature has passed
             </div>
         </div><!DOCTYPE html>
 <html lang="en">
@@ -464,7 +698,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Automated test report - 24/06/2023 11:36:20</a>
+            <a class="navbar-brand" href="#">Automated test report - 24/06/2023 21:42:00</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -481,19 +715,19 @@
                 <canvas id="chart-features" width="300" height="300"/>
             </div>
             <div class="chart-summary title">
-                1 Features:
+                3 Features:
             </div>
-            <div class="chart-summary failed">1 failed</div>
+            <div class="chart-summary failed">0 failed</div>
         </div>
         <div class="col-sm-4">
             <div class="canvas-holder">
                 <canvas id="chart-scenarios" width="300" height="300"/>
             </div>
             <div class="chart-summary title">
-                2
+                7
                 Scenarios:
             </div>
-            <div class="chart-summary failed">2 failed</div>
+            <div class="chart-summary failed">0 failed</div>
             <div class="chart-summary undefined">0 undefined</div>
             <div class="chart-summary skipped">0 skipped</div>
         </div>
@@ -502,10 +736,10 @@
                 <canvas id="chart-steps" width="300" height="300"/>
             </div>
             <div class="chart-summary title">
-                8
+                30
                 Steps:
             </div>
-            <div class="chart-summary failed">2 failed</div>
+            <div class="chart-summary failed">0 failed</div>
             <div class="chart-summary undefined">0 undefined</div>
             <div class="chart-summary skipped">0 skipped</div>
         </div>
@@ -524,7 +758,7 @@
 
                     <div class="row">
                                                     <div class="col-sm-4 feature" data-id="feature-1">
-                                <div class="card failed">
+                                <div class="card passed">
                                     <div class="header">
                                         <h2>Feature: </h2>
                                     </div>
@@ -535,14 +769,15 @@
 <br />
   Regras:<br />
       - Um usuário só deve consultar suas tarefas<br />
-      - Não deve ser apresentado as tarefas concluídas</p>
+      - Não deve ser apresentado as tarefas concluídas<br />
+      - As tarefas devem ser apresentadas por ordem alfabetica do nome</p>
                                     </div>
                                     <div class="footer">
                                         <div class="tags">
                                                                                     </div>
                                                                                     <div class="progress">
                                                 <div class="progress-bar progress-bar-green" role="progressbar"
-                                                     style="width: 0%">
+                                                     style="width: 100%">
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                                 <div class="progress-bar progress-bar-warning" role="progressbar"
@@ -550,7 +785,74 @@
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                                 <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <div class="col-sm-4 feature" data-id="feature-2">
+                                <div class="card passed">
+                                    <div class="header">
+                                        <h2>Feature: </h2>
+                                    </div>
+                                    <div class="info">
+                                        <p>  Eu, como usuário<br />
+  Quero excluir minhas tarefas<br />
+  Para gerenciar minhas atividades<br />
+<br />
+  Regras:<br />
+      - Somente o dono da tarefa pode exclui-la</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="tags">
+                                                                                    </div>
+                                                                                    <div class="progress">
+                                                <div class="progress-bar progress-bar-green" role="progressbar"
                                                      style="width: 100%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <div class="col-sm-4 feature" data-id="feature-3">
+                                <div class="card passed">
+                                    <div class="header">
+                                        <h2>Feature: </h2>
+                                    </div>
+                                    <div class="info">
+                                        <p>  Eu, como usuário<br />
+  Quero incluir minhas tarefas<br />
+  Para saber mminhas atividades pendentes<br />
+<br />
+  Regras:<br />
+      - É obrigatório informar o nome da tarefa<br />
+      - A situação de pronto no cadastro da tarefa deve ser não</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="tags">
+                                                                                    </div>
+                                                                                    <div class="progress">
+                                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                                     style="width: 100%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
                                                     <span class="sr-only">40% Complete (success)</span>
                                                 </div>
                                             </div>
@@ -565,7 +867,7 @@
     <div id="scenario-overview" class="row">
                                     <div class="feature" data-id="feature-1">
                     <div class="col-sm-4">
-                        <div class="card failed">
+                        <div class="card passed">
                             <div class="header">
                                 <h2>Feature: </h2>
                             </div>
@@ -576,14 +878,15 @@
 <br />
   Regras:<br />
       - Um usuário só deve consultar suas tarefas<br />
-      - Não deve ser apresentado as tarefas concluídas</p>
+      - Não deve ser apresentado as tarefas concluídas<br />
+      - As tarefas devem ser apresentadas por ordem alfabetica do nome</p>
                             </div>
                             <div class="footer">
                                 <div class="tags">
                                                                     </div>
                                                                     <div class="progress">
                                         <div class="progress-bar progress-bar-green" role="progressbar"
-                                             style="width: 0%">
+                                             style="width: 100%">
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                         <div class="progress-bar progress-bar-warning" role="progressbar"
@@ -591,7 +894,7 @@
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                         <div class="progress-bar progress-bar-red" role="progressbar"
-                                             style="width: 100%">
+                                             style="width: 0%">
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
                                     </div>
@@ -599,7 +902,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
-                                                    <div class="panel panel-default failed">
+                                                    <div class="panel panel-default passed">
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
@@ -627,36 +930,34 @@
                                                                                                                                                                                                                         <li class="list-group-item alert alert-success">
                                                 <b>Dado</b> que o usuário &lt;username&gt; tem a tarefa &lt;task_name&gt;
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | leorm |  Pagar conta de água |                                                         </p>
-                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | leorm |  Pagar conta de energia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | leorm |  Pagar conta de Internet |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  Deve de geografia |                                                         </p>
+                                                            | leorm |  Pagar conta de água |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | jose |  Dever de história |                                                         </p>
+                                                            | jose |  Dever de geografia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | jose |  Dever de matemática |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  Dever de história |                                                         </p>
                                                                                                                                                                                                                                                                                                 </li>
                                                                                                                                                                                                                         <li class="list-group-item alert alert-success">
                                                 <b>Quando</b> consultar as tarefas do usuário &quot;leorm&quot;
                                                                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-danger">
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
                                                 <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de água |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | Pagar conta de energia |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | Pagar conta de Internet |                                                         </p>
-                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
-                                                            | Pagar conta de água |                                                         </p>
-                                                                                                                                                                                                        <br>
-                                                    <p style="padding-left:2em ; color:gray">(Failed asserting that two strings are equal.)</p>
-                                                                                                                                                                                            </li>
+                                                                                                                                                                                                                                                                                                </li>
                                                                                                                                                                                                                 </ul>
                                 </div>
                             </div>
-                                                    <div class="panel panel-default failed">
+                                                    <div class="panel panel-default passed">
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion"
@@ -699,15 +1000,305 @@
                                                                                                                                                                                                                         <li class="list-group-item alert alert-success">
                                                 <b>Quando</b> consultar as tarefas do usuário &quot;jose&quot;
                                                                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                        <li class="list-group-item alert alert-danger">
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
                                                 <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
                                                                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | Dever de matemática II |                                                         </p>
                                                                                                             <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
                                                             | Dever de português |                                                         </p>
-                                                                                                                                                                                                        <br>
-                                                    <p style="padding-left:2em ; color:gray">(Warning: Undefined array key 0 in /home/leorm/git/tasks/tests/Behat/TaskContext.php line 108)</p>
-                                                                                                                                                                                            </li>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                            <div class="feature" data-id="feature-2">
+                    <div class="col-sm-4">
+                        <div class="card passed">
+                            <div class="header">
+                                <h2>Feature: </h2>
+                            </div>
+                            <div class="info">
+                                <p>  Eu, como usuário<br />
+  Quero excluir minhas tarefas<br />
+  Para gerenciar minhas atividades<br />
+<br />
+  Regras:<br />
+      - Somente o dono da tarefa pode exclui-la</p>
+                            </div>
+                            <div class="footer">
+                                <div class="tags">
+                                                                    </div>
+                                                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-green" role="progressbar"
+                                             style="width: 100%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-red" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-1"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-1">
+                                            Scenario: excluir tarefa do usuário
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-1" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que o usuário &lt;username&gt; tem a tarefa &lt;task_name&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de energia |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de Internet |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de água |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> excluir a tarefa &quot;Pagar conta de energia&quot; do usuário &quot;leorm&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de água |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de Internet |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-2"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-2">
+                                            Scenario: excluir tarefa de outro usuário
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-2" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que o usuário &lt;username&gt; tem a tarefa &lt;task_name&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de energia |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  Prova de matemática |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> excluir a tarefa &quot;Prova de matemática&quot; do usuário &quot;leorm&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Então</b> será apresentado mensagem de erro
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>E</b> a tarefa &quot;Prova de matemática&quot; do usuário &quot;jose&quot; não deve ser excluída
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                            <div class="feature" data-id="feature-3">
+                    <div class="col-sm-4">
+                        <div class="card passed">
+                            <div class="header">
+                                <h2>Feature: </h2>
+                            </div>
+                            <div class="info">
+                                <p>  Eu, como usuário<br />
+  Quero incluir minhas tarefas<br />
+  Para saber mminhas atividades pendentes<br />
+<br />
+  Regras:<br />
+      - É obrigatório informar o nome da tarefa<br />
+      - A situação de pronto no cadastro da tarefa deve ser não</p>
+                            </div>
+                            <div class="footer">
+                                <div class="tags">
+                                                                    </div>
+                                                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-green" role="progressbar"
+                                             style="width: 100%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-red" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-1"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-1">
+                                            Scenario: tarefas do usuário com nome
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-1" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que o usuário &lt;username&gt; tem a tarefa &lt;task_name&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de energia |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de Internet |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Pagar conta de água |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> consultar as tarefas do usuário &quot;leorm&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Então</b> será apresentado as tarefas &lt;task_name&gt;:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de água |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de energia |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pagar conta de Internet |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-2"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-2">
+                                            Scenario: tarefas do usuário sem nome
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-2" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que o usuário &quot;leorm&quot; com a tarefa sem nome
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> salvar
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Então</b> será apresentado mensagem de erro
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>E</b> a tarefa não será salva
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-3"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-3">
+                                            Scenario: nova tarefa cadastrada
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-3" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que temos o usuário &lt;username&gt;, com nome &lt;name&gt; e e-mail &lt;email&gt;
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | leorm |  Leonardo Rodrigues Marques |  leorm@teste.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | jose |  José Antonio Guedes |  jose@teste.com |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que a tarefa &quot;Pagar conta de energia&quot; é nova
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Quando</b> salvar
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Então</b> a tarefa &quot;Pagar conta de energia&quot; deve ter a situação pronto &quot;não&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
                                                                                                                                                                                                                 </ul>
                                 </div>
                             </div>
@@ -729,21 +1320,21 @@
         new Chart(featureChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed', 'Passed'],
                 datasets: [{
-                    data: [1, 0],
+                    data: [0, 3],
                     backgroundColor: ["#F7464A", "#00a65a"],
                 }],
             }});
         new Chart(scenarioChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed', 'Pending', 'Passed'],
                 datasets: [{
-                    data: [2, 0, 0],
+                    data: [0, 0, 7],
                     backgroundColor: ['#F7464A', 'e38d13', '#00a65a'],
                 }],
             }});
         new Chart(stepChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
                 labels: ['Failed','Passed'],
                 datasets: [{
-                    data: [2, 6],
+                    data: [0, 30],
                     backgroundColor: ["#F7464A", "#00a65a"],
                 }],
             }});
@@ -802,19 +1393,19 @@
 </body>
 </html>
 
-        <div class="summary failed">
+        <div class="summary passed">
             <div class="counters">
                 <p class="features">
-                    1 features ( <strong class="failed">1 fail</strong> )
+                    3 features ( <strong class="passed">3 success</strong> )
                 </p>
                 <p class="scenarios">
-                    2 scenarios ( <strong class="failed">2 fail</strong> )
+                    7 scenarios ( <strong class="passed">7 success</strong> )
                 </p>
                 <p class="steps">
-                    8 steps ( <strong class="passed">6 success</strong> <strong class="failed">2 fail</strong> )
+                    30 steps ( <strong class="passed">30 success</strong> )
                 </p>
                 <p class="time">
-                0m0.14s - 30.23Mb
+                0m0.30s - 31.24Mb
                 </p>
             </div>
             <div class="switchers">

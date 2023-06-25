@@ -46,13 +46,15 @@ class TaskRepository extends ServiceEntityRepository
      * @param string $name
      * @return Task[]
      */
-    public function findByName(string $name)
+    public function findByName(string $name, User $user)
     {
         return $this->createQueryBuilder('t')
                         ->where('t.name = :name')
                         ->setParameter('name', $name)
                         ->andWhere('t.done = :done')
                         ->setParameter('done', false)
+                        ->andWhere('t.owner = :owner')
+                        ->setParameter('owner', $user->getId()->toBinary())
                         ->orderBy('t.name', 'ASC')
                         ->getQuery()
                         ->getResult()
