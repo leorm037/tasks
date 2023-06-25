@@ -3,3 +3,22 @@ app_task_index:
     path: /
     controller: App\Controller\TaskController::index
     methods: GET
+
+app_task_new:
+    path: /new
+    controller: App\Controller\TaskController::new
+    methods: GET|POST
+
+app_task_edit:
+    path: /{id}/edit
+    controller: App\Controller\TaskController::edit
+    methods: GET|POST
+    requirements:
+        id: '[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}'
+
+app_task_delete:
+    path: /{id}/delete
+    controller: App\Controller\TaskController::delete
+    methods: GET
+    requirements:
+        id: '[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}'
