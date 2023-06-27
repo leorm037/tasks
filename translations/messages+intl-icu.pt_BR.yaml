@@ -1,0 +1,3 @@
+'no record found': 'Nenhum registro encontrado'
+task.new.sucess: 'A tarefa "{name}" foi criada com sucesso.'
+task.edit.sucess: 'A tarefa "{name}" foi atualizada com sucesso.'

@@ -3,16 +3,27 @@
 namespace App\Controller;
 
 use App\Entity\Task;
-use App\Form\TaskType;
+use App\Form\TaskFormType;
 use App\Repository\TaskRepository;
 use App\Security\Voter\TaskVoter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class TaskController extends AbstractController
 {
+
+    private TaskRepository $taskRepository;
+    private TranslatorInterface $translator;
+
+    public function __construct(
+            TaskRepository $taskRepository,
+            TranslatorInterface $translator
+    ) {
+        $this->taskRepository = $taskRepository;
+        $this->translator = $translator;
+    }
 
     public function index(TaskRepository $taskRepository): Response
     {
@@ -26,11 +37,16 @@ class TaskController extends AbstractController
     public function new(Request $request, TaskRepository $taskRepository): Response
     {
         $task = new Task();
-        $form = $this->createForm(TaskType::class, $task);
+        $form = $this->createForm(TaskFormType::class, $task);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $owner = $this->getUser();
+            $task->setOwner($owner);
+            
             $taskRepository->save($task, true);
+            
+            $this->addFlash('success', $this->translator->trans('task.new.sucess', ['name' => $task->getName()]));
 
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -41,15 +57,17 @@ class TaskController extends AbstractController
         ]);
     }
 
-    public function edit(Request $request, Task $task, TaskRepository $taskRepository): Response
+    public function edit(Request $request, Task $task): Response
     {
         $this->isGranted(TaskVoter::EDIT, $task);
-
-        $form = $this->createForm(TaskType::class, $task);
+        
+        $form = $this->createForm(TaskFormType::class, $task);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $taskRepository->save($task, true);
+            $this->taskRepository->save($task, true);
+            
+            $this->addFlash('success', $this->translator->trans('task.edit.sucess', ['name' => $task->getName()]));
 
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }

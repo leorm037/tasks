@@ -54,27 +54,39 @@ class TaskVoter extends Voter
         return false;
     }
 
+    /**
+     * 
+     * @param Task $task
+     * @param User $user
+     * @return bool
+     */
     private function taskNotDone(Task $task, User $user): bool
     {
-        if (false === $subject->getDone()) {
+        if (false === $task->isDone()) {
             return true;
         }
 
         $this->logger->alert("Tarefa concluída não pode ser editada.", [
-            'task_id' => $subject->getId(),
-            'task_name' => $subject->getName(),
+            'task_id' => $task->getId(),
+            'task_name' => $task->getName(),
             'User' => $user->getUsername()
         ]);
 
         return false;
     }
 
+    /**
+     * 
+     * @param Task $task
+     * @param User $user
+     * @return bool
+     */
     private function ownerTask(Task $task, User $user): bool
     {
         if ($user !== $task->getOwner()) {
             $this->logger->alert("Tarefa concluída não pode ser editada.", [
-                'task_id' => $subject->getId(),
-                'task_name' => $subject->getName(),
+                'task_id' => $task->getId(),
+                'task_name' => $task->getName(),
                 'User' => $user->getUsername()
             ]);
 

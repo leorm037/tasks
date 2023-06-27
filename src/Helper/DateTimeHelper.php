@@ -10,24 +10,16 @@ use DateTimeZone;
 class DateTimeHelper
 {
 
-    public static function currentDateTimeUTC(): DateTimeInterface
+    public static function currentDateTimeZone(string $timeZone = 'America/Sao_Paulo'): DateTimeInterface
     {
-        $datetime = new DateTime();
-        $datetime->setTimezone(new DateTimeZone('UTC'));
+        $dateTime = new DateTime();
+        $dateTime->setTimezone(new DateTimeZone($timeZone));
 
-        return $datetime;
+        return $dateTime;
     }
 
-    public static function currentDateTimeImmutableUTC(): DateTimeImmutable
+    public static function currentDateTimeImmutableZone(string $timeZone = 'America/Sao_Paulo'): DateTimeImmutable
     {
-        return DateTimeImmutable::createFromMutable(self::currentDateTimeUTC());
+        return DateTimeImmutable::createFromMutable(self::currentDateTimeZone($timeZone));
     }
-
-    public static function dateTimeImmutableUTC(DateTimeInterface $date): DateTimeImmutable
-    {
-        $date->setTimezone(new \DateTimeZone('UTC'));
-
-        return DateTimeImmutable::createFromMutable($date);
-    }
-
 }

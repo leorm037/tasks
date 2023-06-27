@@ -1,33 +1,21 @@
 {# templates/task/_form.html.twig #}
 {{ form_start(form) }}
     <div class="card">
-        <div class="card-header bg-primary bg-gradient text-light">
-            <h1 class="h4 my-0">{{ 'new'|trans({}, 'label') }}</h1>
+        <div class="card-header">
+            <h1 class="h4 my-0">{{ 'New'|trans({}, 'label') }}</h1>
         </div>
         <div class="card-body">
-            {% if  task.taskOwner %}
-                <div class="mb-3">
-                    <label for="taskOwner" class="form-label">{{ 'taskOwner'|trans({}, 'label') }}</label>
-                    <input type="text" class="form-control" id="taskOwner" aria-label="Read only" value="{{ task.taskOwner.name }}" readonly>
-                </div>
-            {% endif %}
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
             <div class="row">
-                <div class="col-12 col-lg-4 mb-3">
-                    {{ form_label(form.deadline) }}
-                    {{ form_errors(form.deadline) }}
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
-                        {{ form_widget(form.deadline) }}
-                    </div>
-                    {{ form_help(form.deadline) }}
+                <div class="col-12 col-lg-4">
+                    {{ form_row(form.done) }}
                 </div>
-                <div class="col-12 col-lg-4 mb-3">
-                    {{ form_row(form.progress) }}
+                <div class="col-12 col-lg-4">
+                    {{ form_row(form.createdAt) }}
                 </div>
-                <div class="col-12 col-lg-4 mb-3">
-                    {{ form_row(form.situation) }}
+                <div class="col-12 col-lg-4">
+                    {{ form_row(form.updatedAt) }}
                 </div>
             </div>
         </div>

@@ -23,14 +23,14 @@ abstract class AbstractEntity
     private function createdAt(): void
     {
         if (property_exists(get_class($this), "createdAt") && null === $this->createdAt) {
-            $this->createdAt = DateTimeHelper::currentDateTimeImmutableUTC();
+            $this->createdAt = DateTimeHelper::currentDateTimeImmutableZone();
         }
     }
 
     private function updatedAt(): void
     {
         if (property_exists(get_class($this), "updatedAt")) {
-            $this->updatedAt = DateTimeHelper::currentDateTimeUTC();
+            $this->updatedAt = DateTimeHelper::currentDateTimeImmutableZone();
         }
     }
 }

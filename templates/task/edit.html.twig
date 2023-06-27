@@ -1,10 +1,10 @@
 {# templates/task/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} :: New Tasks{% endblock %}
+{% block title %}{{ parent() }} :: {{ 'New tasks'|trans({}, 'label') }}{% endblock %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item active"><i class="bi bi-pencil-square"></i> {{ 'edit'|trans({}, 'label') }}</li>
+    <li class="breadcrumb-item active"><i class="bi bi-pencil-square"></i> {{ 'Edit'|trans({}, 'label') }}</li>
 {% endblock %}
 
 {% block body %}

@@ -5,26 +5,29 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item active"><i class="bi bi-list-task"></i> {{ 'List tasks'|trans({}, 'label') }}</li>
-    {% endblock %}
+{% endblock %}
 
 {% block body %}
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <div><h1 class="h4">{{ 'List tasks'|trans({}, 'label') }}</h1></div>
-                <div><a href="#" class="btn btn-primary btn-sm"><i class="bi bi-clipboard2-plus"></i> {{ 'btn.new'|trans({}, 'label') }}</a></div>
+                <div><h1 class="h4 my-0">{{ 'List tasks'|trans({}, 'label') }}</h1></div>
+                <div><a href="{{ path('app_task_new') }}" class="btn btn-primary btn-sm"><i class="bi bi-clipboard2-plus"></i> {{ 'btn.new'|trans({}, 'label') }}</a></div>
             </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table align-middle">
+                <table class="table table-hover align-middle">
                     <thead>
                         <tr>
                             <th scope="col">
-                                {{ 'name'|trans({}, 'label') }}
+                                {{ 'Name'|trans({}, 'label') }}
                             </th>
                             <th scope="col">
-                                {{ 'updated'|trans({}, 'label') }}
+                                {{ 'Updated'|trans({}, 'label') }}
+                            </th>
+                            <th scope="col" class="text-center">
+                                {{ 'Actions'|trans({}, 'label') }}
                             </th>
                         </tr>
                     </thead>
@@ -35,12 +38,16 @@
                                     <i class="bi bi-journal"></i> {{ task.name }}
                                 </td>
                                 <td class="text-end">
-                                    {{ task.updatedAt|default(task.createdAt)|format_datetime('short', 'short', timezone='America/Sao_Paulo', locale=app.request.locale|replace({'_': '-'})) }}
+                                    {{ task.updatedAt|default(task.createdAt)|format_datetime(pattern="dd/MM/y HH:mm:ss") }}
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-sm btn-secondary" href="{{ path('app_task_edit', {'id': task.id}) }}"><i class="bi bi-pencil-square"></i> <span class="d-none d-lg-inline-block">{{ 'btn.edit'|trans({}, 'label') }}</span></a>
+                                    <a class="btn btn-sm btn-danger" href="{{ path('app_task_delete', {'id': task.id}) }}"><i class="bi bi-x-square"></i> <span class="d-none d-lg-inline-block">{{ 'btn.delete'|trans({}, 'label') }}</span></a>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="2" class="text-center">{{ 'no record found'|trans }}</td>
+                                <td colspan="3" class="text-center">{{ 'no record found'|trans }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -48,11 +55,15 @@
             </div>
         </div>
         <div class="card-footer text-body-secondary text-center">
-            Pagination
+            <nav aria-label="Pagination">
+                <ul class="pagination pagination-sm justify-content-center my-0">
+                    <li class="page-item"><a class="page-link" href="#" tabindex="-1">{{ 'btn.previous'|trans({}, 'label') }}</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">{{ 'btn.next'|trans({}, 'label') }}</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts_footer %}
-    {{ parent() }}
 {% endblock %}
