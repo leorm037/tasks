@@ -18,10 +18,10 @@ class TaskFormType extends AbstractType
     {
         $builder
                 ->add('name', null, [
-                    'label' => 'name'
+                    'label' => 'Name'
                 ])
                 ->add('description', TextareaType::class, [
-                    'label' => 'description',
+                    'label' => 'Description',
                     'required' => false,
                 ])
                 ->add('done', ChoiceType::class, [
@@ -57,4 +57,3 @@ class TaskFormType extends AbstractType
         ]);
     }
 }
-

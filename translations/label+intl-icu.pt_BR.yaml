@@ -1,21 +1,24 @@
 'List tasks': 'Lista de tarefas'
-btn.new: Novo
-New: Novo
 'New Task': 'Nova tarefa'
-Edit: Editar
+Actions: Ações
 CreatedAt: Criado
-UpdatedAt: Atualizado
 Done: Concluído
+Edit: Editar
 Name: Nome
+New: Novo
+Search: Pesquisar
 Updated: Atualizado
-btn.save: Salvar
-btn.reset: Limpar
-btn.edit: Editar
+UpdatedAt: Atualizado
 btn.delete: Excluir
-login: Entrar
+btn.edit: Editar
+btn.login: Entrar
+btn.logout: Sair
+btn.new: Novo
+btn.reset: Limpar
+btn.save: Salvar
+btn.search: Pesquisar
 close: Fechar
 home: 'Página Inicial'
-version: Versão
-Actions: Ações
 option.no: Não
 option.yes: Sim
+version: Versão

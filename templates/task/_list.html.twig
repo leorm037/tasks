@@ -1,0 +1,38 @@
+{# templates/task/_list.html.twig #}
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col">
+                    {{ 'Name'|trans({}, 'label') }}
+                </th>
+                <th scope="col">
+                    {{ 'Updated'|trans({}, 'label') }}
+                </th>
+                <th scope="col" class="text-center">
+                    {{ 'Actions'|trans({}, 'label') }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr id="{{ task.id }}">
+                    <td>
+                        <i class="bi bi-journal"></i> {{ task.name }}
+                    </td>
+                    <td class="text-end">
+                        {{ task.updatedAt|default(task.createdAt)|format_datetime(pattern="dd/MM/y HH:mm:ss") }}
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-secondary" href="{{ path('app_task_edit', {'id': task.id}) }}"><i class="bi bi-pencil-square"></i> <span class="d-none d-lg-inline-block">{{ 'btn.edit'|trans({}, 'label') }}</span></a>
+                        <a class="btn btn-sm btn-danger" href="{{ path('app_task_delete', {'id': task.id}) }}"><i class="bi bi-x-square"></i> <span class="d-none d-lg-inline-block">{{ 'btn.delete'|trans({}, 'label') }}</span></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center">{{ 'no record found'|trans }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

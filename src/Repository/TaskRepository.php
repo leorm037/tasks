@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -30,6 +31,31 @@ class TaskRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function search(User $user, string $name = null, string $description = null)
+    {
+        $query = $this->createQueryBuilder('t')
+                ->where('t.owner = :owner')
+                ->setParameter('owner', $user->getId()->toBinary())
+        ;
+
+        if (null != $name) {
+            $query->andWhere('MATCH (t.name) AGAINST (:name IN BOOLEAN MODE) > 0')
+                    ->setParameter('name', $name)
+            ;
+        }
+
+        if (null != $description) {
+            $query->andWhere('MATCH (t.description) AGAINST (:description IN BOOLEAN MODE) > 0')
+                    ->setParameter('description', $description)
+            ;
+        }
+
+        return $query->orderBy('t.name', 'ASC')
+                        ->getQuery()
+                        ->getResult()
+        ;
     }
 
     public function remove(Task $entity, bool $flush = false): void

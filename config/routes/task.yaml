@@ -16,6 +16,11 @@ app_task_edit:
     requirements:
         id: '[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}'
 
+app_task_search:
+    path: /search
+    controller: App\Controller\TaskController::search
+    methods: GET|POST
+    
 app_task_delete:
     path: /{id}/delete
     controller: App\Controller\TaskController::delete

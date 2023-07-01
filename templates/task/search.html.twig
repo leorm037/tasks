@@ -1,0 +1,35 @@
+{# templates/task/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} :: {{ 'Search'|trans({}, 'label') }}{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active"><i class="bi bi-funnel"></i> {{ 'Search'|trans({}, 'label') }}</li>
+    {% endblock %}
+
+{% block body %}
+    <form method="post" action="search">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="h4 my-0">{{ 'Search'|trans({}, 'label') }}</h1>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label for="nameSearch">{{ 'Name'|trans({}, 'label') }}</label>
+                    <input type="text" name="name" class="form-control" id="nameSearch" value="{{ name }}">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="descriptionSearch">{{ 'Description'|trans({}, 'label') }}</label>
+                    <input type="text" name="description" class="form-control" id="descriptionSearch" value="{{ description }}">
+                </div>
+            </div>
+            <div class="card-footer bg-primary-subtle bg-gradient text-end border-bottom border-primary-subtle">
+                <button type="submit" class="btn btn-primary bg-gradient btn-sm">{{ 'btn.search'|trans({}, 'label') }}</button>
+                <a class="btn btn-secondary bg-gradient btn-sm" href="{{ path('app_task_search') }}">{{ 'btn.reset'|trans({}, 'label') }}</a>
+            </div>
+            <div class="card-body">
+                {{ include('task/_list.html.twig') }}
+            </div>
+        </div>
+    </form>
+{% endblock %}

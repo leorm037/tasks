@@ -20,7 +20,8 @@ class TaskController extends AbstractController
     public function __construct(
             TaskRepository $taskRepository,
             TranslatorInterface $translator
-    ) {
+    )
+    {
         $this->taskRepository = $taskRepository;
         $this->translator = $translator;
     }
@@ -43,39 +44,51 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $owner = $this->getUser();
             $task->setOwner($owner);
-            
+
             $taskRepository->save($task, true);
-            
+
             $this->addFlash('success', $this->translator->trans('task.new.sucess', ['name' => $task->getName()]));
 
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('task/new.html.twig', [
+        return $this->render('task/new.html.twig', [
                     'task' => $task,
-                    'form' => $form,
+                    'form' => $form->createView(),
         ]);
     }
 
     public function edit(Request $request, Task $task): Response
     {
         $this->isGranted(TaskVoter::EDIT, $task);
-        
+
         $form = $this->createForm(TaskFormType::class, $task);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->taskRepository->save($task, true);
-            
+
             $this->addFlash('success', $this->translator->trans('task.edit.sucess', ['name' => $task->getName()]));
 
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('task/edit.html.twig', [
+        return $this->render('task/edit.html.twig', [
                     'task' => $task,
-                    'form' => $form,
+                    'form' => $form->createView(),
         ]);
+    }
+
+    public function search(Request $request): Response
+    {
+        $name = $request->request->get('name');
+        $description = $request->request->get('description');
+        
+        $user = $this->getUser();
+            
+        $tasks = $this->taskRepository->search($user, $name, $description);
+        
+        return $this->render('task/search.html.twig', compact('name', 'description', 'tasks'));
     }
 
     public function delete(Task $task, TaskRepository $taskRepository): Response
@@ -83,6 +96,8 @@ class TaskController extends AbstractController
         $this->isGranted(TaskVoter::DELETE, $task);
 
         $taskRepository->remove($task, true);
+
+        $this->addFlash('success', $this->translator->trans('task.delete.sucess', ['name' => $task->getName()]));
 
         return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
     }
